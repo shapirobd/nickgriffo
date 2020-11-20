@@ -8,17 +8,19 @@ def connect_db(app):
     db.app = app
     db.init_app(app)
 
-class Scanner1Img(db.Model):
-    __tablename__ = 'scanner_1_images'
+class Image(db.Model):
+    __tablename__ = 'images'
 
     id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
     filename = db.Column(db.Text, nullable=False)
+    folder = db.Column(db.Text, nullable=False)
 
     @classmethod
-    def add_all_imgs(cls, imgs):
+    def add_all_imgs(cls, imgs, folder):
         for img in imgs:
-            new_img = Scanner1Img(filename=img)
-            db.session.add(new_img)
+            if (img != '.DS_Store'):
+                new_img = Image(filename=img, folder=folder)
+                db.session.add(new_img)
 
     @classmethod
     def serialize(cls, img):
@@ -26,6 +28,8 @@ class Scanner1Img(db.Model):
             'id': img.id,
             'filename': img.filename
         }
+
+
     
 
 # class User(db.Model):

@@ -3,7 +3,7 @@ import os
 
 from flask import Flask, session, request, render_template, redirect, g, flash, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, Scanner1Img
+from models import db, connect_db, Image
 
 app = Flask(__name__)
 
@@ -23,8 +23,11 @@ toolbar = DebugToolbarExtension(app)
 def home():
     return render_template('home.html')
 
-@app.route('/scanner_1_imgs')
-def show_scanner_1_imgs():
-    imgs = Scanner1Img.query.all()
-    serialized_imgs = [Scanner1Img.serialize(img) for img in imgs]
+@app.route('/<string:folder>')
+def show_scanner_1_imgs(folder):
+    print(folder)
+    imgs = Image.query.filter(Image.folder == folder).all()
+    print(imgs)
+    serialized_imgs = [Image.serialize(img) for img in imgs]
+    print(serialized_imgs)
     return jsonify(imgs=serialized_imgs)

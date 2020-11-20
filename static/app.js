@@ -2,18 +2,22 @@ let currentPage;
 let imgs;
 let currentImgIndex;
 
-$("#scanner_1").on("click", async function (evt) {
+$(".nav-link").on("click", async function (evt) {
 	evt.preventDefault();
-	const resp = await axios.get("http://127.0.0.1:5000/scanner_1_imgs");
-	currentPage = "scanner_1_imgs";
+	$("#img-container").empty();
+	currentPage = $(this).attr("id");
 	currentImgIndex = 0;
+	const resp = await axios.get(`http://127.0.0.1:5000/${currentPage}`);
 	imgs = resp.data.imgs;
-	const firstImgHTML = generateImgHTML(imgs[currentImgIndex].filename);
+	const firstImgHTML = generateImgHTML(
+		imgs[currentImgIndex].filename,
+		currentPage
+	);
 	$("#img-container").append(firstImgHTML);
 });
 
-function generateImgHTML(filename) {
-	return `<div><img id="main-img" src="../static/images/scanner_1_imgs/${filename}" /></div>`;
+function generateImgHTML(filename, folder) {
+	return `<div><img id="main-img" src="../static/images/${folder}/${filename}" /></div>`;
 }
 
 $("#fwd-btn").on("click", () => {
@@ -22,14 +26,7 @@ $("#fwd-btn").on("click", () => {
 	} else {
 		currentImgIndex++;
 	}
-	console.log(currentImgIndex);
-	const nextImgHTML = generateImgHTML(imgs[currentImgIndex].filename);
-	$("#img-container").fadeOut(250);
-	setTimeout(() => {
-		$("#img-container").empty();
-		$("#img-container").append(nextImgHTML);
-	}, 250);
-	$("#img-container").fadeIn(250);
+	getNextOrPrevImg();
 });
 
 $("#back-btn").on("click", () => {
@@ -38,12 +35,22 @@ $("#back-btn").on("click", () => {
 	} else {
 		currentImgIndex--;
 	}
-	console.log(currentImgIndex);
-	const prevImgHTML = generateImgHTML(imgs[currentImgIndex].filename);
+	getNextOrPrevImg();
+});
+
+function getNextOrPrevImg() {
+	const soughtImgHTML = generateImgHTML(
+		imgs[currentImgIndex].filename,
+		currentPage
+	);
+	fadeImg(soughtImgHTML);
+}
+
+function fadeImg(imgHTML) {
 	$("#img-container").fadeOut(250);
 	setTimeout(() => {
 		$("#img-container").empty();
-		$("#img-container").append(prevImgHTML);
+		$("#img-container").append(imgHTML);
 	}, 250);
 	$("#img-container").fadeIn(250);
-});
+}
