@@ -1,0 +1,100 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid px-0">
+	<div class="row">
+		<div class="col-2 mx-0 p-2 scroll" id="sidebar">
+			<div class="row justify-content-center">
+				<p>NICHOLAS GRIFFO</p>
+			</div>
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a id="scanner_1" class="nav-link" href="">Scanner I</a>
+				</li>
+				{#
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2020_CDMX">Photography 2020 CDMX</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2020_Rain_Kids"
+						>Photography 2020 Rain Kids</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2019_Brett">Photography 2019 Brett</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2019_Innocent_X"
+						>Photography 2019 Innocent X</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2019_Jeremy">Photography 2019 Jeremy</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2019_Suburbs"
+						>Photography 2019 Suburbs</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2018_Flowers"
+						>Photography 2018 Flowers</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2018_People_at_Fashion"
+						>Photography 2018 People at Fashion</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2018_Wing">Photography 2018 Wing</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2017_Lifestyle_Items"
+						>Photography 2017 Lifestyle Items</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/p_2016_I">Photography 2016 I</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/v_III_2019_Beauty_and_Virtue"
+						>Video III 2019 Beauty and Virtue</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/v_II_2016_Water">Video II 2016 Water</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/v_I">Video I</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="/Music_Videos">Music Videos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/contact">Contact</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/imdb">IMDB</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/cv">CV</a>
+				</li>
+				#}
+			</ul>
+		</div>
+		<div class="col-10">
+			<div class="row justify-content-center">
+				<div class="btn-group" role="group" aria-label="Basic example">
+					<button id="back-btn" type="button" class="btn btn-white text-black">
+						<i class="fas fa-chevron-left"></i>
+					</button>
+					<button id="fwd-btn" type="button" class="btn btn-white text-black">
+						<i class="fas fa-chevron-right"></i>
+					</button>
+				</div>
+			</div>
+			<div id="img-container" class="row justify-content-center"></div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

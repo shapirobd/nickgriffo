@@ -1,0 +1,52 @@
+.scroll {
+	max-height: 100vh;
+	overflow-y: auto;
+}
+
+.nav-link {
+	color: black;
+	font-size: 10px;
+}
+
+.nav-link:hover {
+	color: black;
+	background-color: red;
+}
+
+.carousel {
+	padding: 20px;
+	max-width: fit-content;
+}
+
+.carousel-fade .carousel-item {
+	opacity: 0;
+	transition-duration: 0.2s;
+	transition-property: opacity;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+	opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+	transition-duration: 0s;
+	opacity: 0;
+}
+
+/* .carousel-fade .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active,
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-prev {
+	transform: scale(1);
+} */
+
+img {
+	display: block;
+	max-width: fit-content;
+	max-height: 90vh;
+	height: auto;
+}
