@@ -7,6 +7,21 @@ body {
 	font-family: "aesthetregular";
 }
 
+#index-list {
+	padding: 0;
+	list-style-type: none;
+	font-size: 10px;
+	text-align: center;
+}
+
+#index-btn:focus {
+	box-shadow: none !important;
+}
+
+.hidden {
+	display: none;
+}
+
 .scroll {
 	max-height: 100vh;
 	overflow-y: auto;
@@ -14,12 +29,7 @@ body {
 
 .nav-link {
 	color: black;
-	font-size: 11px;
-}
-
-.nav-link:hover {
-	color: black;
-	background-color: red;
+	font-size: 10px;
 }
 
 .carousel {

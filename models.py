@@ -25,7 +25,6 @@ class Image(db.Model):
     @classmethod
     def serialize(cls, img):
         return {
-            'id': img.id,
             'filename': img.filename
         }
 

@@ -1,91 +1,91 @@
 {% extends "base.html" %} {% block content %}
 <div class="container-fluid px-0">
 	<div class="row">
-		<div class="col-2 mx-0 p-2 scroll" id="sidebar">
+		<div class="col-2 mx-0 py-2 scroll" id="sidebar">
 			<div class="row justify-content-center">
-				<p>NICHOLAS GRIFFO</p>
+				<b>Nicholas Griffo</b>
 			</div>
 			<ul class="nav flex-column">
 				<li class="nav-item">
-					<a id="scanner_1_imgs" class="nav-link" href="">Scanner I</a>
+					<a class="nav-link text-secondary py-0" href="">Contact</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-secondary py-0" href="">IMDB</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-secondary py-0" href="">CV</a>
+				</li>
+				<li class="nav-item">
+					<a id="scanner_1_imgs" class="nav-link py-0" href="">Scanner I</a>
 				</li>
 
 				<li class="nav-item">
-					<a id="photo_2020_cdmx_imgs" class="nav-link" href=""
+					<a id="photo_2020_cdmx_imgs" class="nav-link py-0" href=""
 						>Photography 2020 CDMX</a
 					>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2020_rain_kids_imgs" class="nav-link" href=""
+					<a id="photo_2020_rain_kids_imgs" class="nav-link py-0" href=""
 						>Photography 2020 Rain Kids</a
 					>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2019_brett_imgs" class="nav-link" href=""
+					<a id="photo_2019_brett_imgs" class="nav-link py-0" href=""
 						>Photography 2019 Brett</a
 					>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2019_innocent_x_imgs" class="nav-link" href=""
+					<a id="photo_2019_innocent_x_imgs" class="nav-link py-0" href=""
 						>Photography 2019 Innocent X</a
 					>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2019_jeremy_imgs" class="nav-link" href="">Photography 2019 Jeremy</a>
+					<a id="photo_2019_jeremy_imgs" class="nav-link py-0" href="">Photography 2019 Jeremy</a>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2019_suburbs_imgs" class="nav-link" href=""
+					<a id="photo_2019_suburbs_imgs" class="nav-link py-0" href=""
 						>Photography 2019 Suburbs</a
 					>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2018_flowers_imgs" class="nav-link" href=""
+					<a id="photo_2018_flowers_imgs" class="nav-link py-0" href=""
 						>Photography 2018 Flowers</a
 					>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2018_ppl_fashion_imgs" class="nav-link" href=""
+					<a id="photo_2018_ppl_fashion_imgs" class="nav-link py-0" href=""
 						>Photography 2018 People at Fashion</a
 					>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2018_wing_imgs" class="nav-link" href="">Photography 2018 Wing</a>
+					<a id="photo_2018_wing_imgs" class="nav-link py-0" href="">Photography 2018 Wing</a>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2017_lifestyle_items_imgs" class="nav-link" href=""
+					<a id="photo_2017_lifestyle_items_imgs" class="nav-link py-0" href=""
 						>Photography 2017 Lifestyle Items</a
 					>
 				</li>
 				<li class="nav-item">
-					<a id="photo_2016_1_imgs" class="nav-link" href="">Photography 2016 I</a>
+					<a id="photo_2016_1_imgs" class="nav-link py-0" href="">Photography 2016 I</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href=""
+					<a class="nav-link py-0" href=""
 						>Video III 2019 Beauty and Virtue</a
 					>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="">Video II 2016 Water</a>
+					<a class="nav-link py-0" href="">Video II 2016 Water</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href=""">Video I</a>
+					<a class="nav-link py-0" href=""">Video I</a>
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="">Music Videos</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="">Contact</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="">IMDB</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="">CV</a>
+					<a class="nav-link py-0" href="">Music Videos</a>
 				</li>
 			</ul>
 		</div>
-		<div class="col-10">
+		<div class="col-8">
 			<div class="row justify-content-center">
 				<div class="btn-group" role="group" aria-label="Basic example">
 					<button id="back-btn" type="button" class="btn btn-white text-black">
@@ -97,6 +97,20 @@
 				</div>
 			</div>
 			<div id="img-container" class="row justify-content-center"></div>
+		</div>
+		<div class="col-2 mx-0 py-2 scroll">
+			<div class="row justify-content-center">
+  				<button id="index-btn" class="btn btn-white hidden" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Index
+  				</button>
+			</div>
+			<div class="row justify-content-center">
+				<div class="collapse" id="collapseExample">
+
+					  <ul id="index-list">
+					  </ul>
+
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

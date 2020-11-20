@@ -25,9 +25,12 @@ def home():
 
 @app.route('/<string:folder>')
 def show_scanner_1_imgs(folder):
-    print(folder)
     imgs = Image.query.filter(Image.folder == folder).all()
-    print(imgs)
     serialized_imgs = [Image.serialize(img) for img in imgs]
-    print(serialized_imgs)
     return jsonify(imgs=serialized_imgs)
+
+@app.route('/img/<string:filename>')
+def show_img_from_index(filename):
+    img = Image.query.filter(Image.filename == filename).first()
+    serialized_img = Image.serialize(img)
+    return jsonify(img=serialized_img)
