@@ -7,15 +7,71 @@ body {
 	font-family: "aesthetregular";
 }
 
-#index-list {
-	padding: 0;
+#index-col {
+	width: 100%;
+}
+
+#main-img {
+	max-width: 100%;
+}
+
+#nick-griffo {
+	width: 100%;
+}
+
+#main-row {
+	width: 100vw;
+}
+
+#contact-info-list {
 	list-style-type: none;
 	font-size: 10px;
+}
+
+#index-list-left {
+	list-style-type: none;
+	text-align: center;
+}
+#index-list-middle {
+	list-style-type: none;
+	text-align: center;
+}
+#index-list-right {
+	list-style-type: none;
 	text-align: center;
 }
 
 #index-btn:focus {
 	box-shadow: none !important;
+}
+
+#back-btn:focus {
+	box-shadow: none;
+}
+#fwd-btn:focus {
+	box-shadow: none;
+}
+
+/* .btn-group {
+	height: 15px;
+} */
+
+.collapse,
+.collapsing {
+	width: 100% !important;
+}
+
+.thumbnail {
+	opacity: 0.5;
+	transition-duration: 0.2s;
+	width: 100%;
+	height: auto;
+}
+
+.thumbnail:hover {
+	opacity: 1;
+	transition-duration: 0.2s;
+	transform: scale(1.1);
 }
 
 .hidden {

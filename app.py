@@ -34,3 +34,12 @@ def show_img_from_index(filename):
     img = Image.query.filter(Image.filename == filename).first()
     serialized_img = Image.serialize(img)
     return jsonify(img=serialized_img)
+
+@app.route('/contact')
+def show_contact_info():
+    contact_info = {
+        'email': 'virtuousboy0@gmail.com',
+        'instagram': 'https://www.instagram.com/dracaenaamericana/?hl=en',
+        'imdb': 'https://www.imdb.com/name/nm11881226/'
+    }
+    return jsonify(info=contact_info)

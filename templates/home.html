@@ -1,19 +1,16 @@
 {% extends "base.html" %} {% block content %}
 <div class="container-fluid px-0">
-	<div class="row">
-		<div class="col-2 mx-0 py-2 scroll" id="sidebar">
-			<div class="row justify-content-center">
+	<div id="main-row" class="row">
+		<div class="col-2 mx-0 py-2 pr-0 scroll" id="sidebar">
+			<div class="row justify-content-center" id="nick-griffo">
 				<b>Nicholas Griffo</b>
 			</div>
 			<ul class="nav flex-column">
 				<li class="nav-item">
-					<a class="nav-link text-secondary py-0" href="">Contact</a>
+					<a id="contact" class="nav-link text-secondary py-0" href="">Contact</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-secondary py-0" href="">IMDB</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-secondary py-0" href="">CV</a>
+					<a id="cv" class="nav-link text-secondary py-0" href="">CV</a>
 				</li>
 				<li class="nav-item">
 					<a id="scanner_1_imgs" class="nav-link py-0" href="">Scanner I</a>
@@ -87,7 +84,7 @@
 		</div>
 		<div class="col-8">
 			<div class="row justify-content-center">
-				<div class="btn-group" role="group" aria-label="Basic example">
+				<div id="scroll-btn" class="btn-group mt-1 hidden" role="group" aria-label="Basic example">
 					<button id="back-btn" type="button" class="btn btn-white text-black">
 						<i class="fas fa-chevron-left"></i>
 					</button>
@@ -98,17 +95,23 @@
 			</div>
 			<div id="img-container" class="row justify-content-center"></div>
 		</div>
-		<div class="col-2 mx-0 py-2 scroll">
-			<div class="row justify-content-center">
+		<div class="col-2 mx-0 py-2 px-0 scroll">
+			<div class="row justify-content-center" id="index-col">
   				<button id="index-btn" class="btn btn-white hidden" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Index
   				</button>
-			</div>
-			<div class="row justify-content-center">
-				<div class="collapse" id="collapseExample">
-
-					  <ul id="index-list">
-					  </ul>
-
+				<div class="row justify-content-center collapse mx-0" id="collapseExample">
+					<div class="col-4 px-0">
+						<ul id="index-list-left">
+					    </ul>
+					</div>
+					<div class="col-4 px-0">
+						<ul id="index-list-middle">
+					    </ul>
+					</div>
+					<div class="col-4 px-0">
+						<ul id="index-list-right">
+					    </ul>
+					</div>
 				</div>
 			</div>
 		</div>

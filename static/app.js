@@ -5,35 +5,103 @@ let indexIsHidden = true;
 
 $(".nav-link").on("click", async function (evt) {
 	evt.preventDefault();
-	$("#index-list").empty();
+	$("#index-list-left").empty();
+	$("#index-list-middle").empty();
+	$("#index-list-right").empty();
+
 	if ($(".collapse").hasClass("show")) {
 		$(".collapse").removeClass("show");
 	}
-	if (
-		$(this).hasClass("text-secondary") &&
-		!$("#index-btn").hasClass("hidden")
-	) {
-		toggleIndex(true);
-	} else if (
-		!$(this).hasClass("text-secondary") &&
-		$("#index-btn").hasClass("hidden")
-	) {
-		toggleIndex(false);
-	}
+
+	determineIndexToggle(this);
+	determineScrollBtnToggle(this);
+
 	$("#img-container").empty();
+
 	currentPage = $(this).attr("id");
 	currentImgIndex = 0;
 	const resp = await axios.get(`http://127.0.0.1:5000/${currentPage}`);
+	if (!resp.data.imgs) {
+		handleSecondaryLink(resp);
+	} else {
+		handlePrimaryLink(resp);
+	}
+});
+
+function handlePrimaryLink(resp) {
 	imgs = resp.data.imgs;
 	const firstImgHTML = generateImgHTML(
 		imgs[currentImgIndex].filename,
 		currentPage
 	);
-	const indexListHTML = generateIndexListHTML(imgs);
+	const leftIndexListHTML = renderLeftIndexList();
+	const middleIndexListHTML = renderMiddleIndexList();
+	const rightIndexListHTML = renderRightIndexList();
+
 	$("#img-container").append(firstImgHTML);
-	$("#index-list").append(indexListHTML);
+	$("#index-list-left").append(leftIndexListHTML);
+	$("#index-list-middle").append(middleIndexListHTML);
+	$("#index-list-right").append(rightIndexListHTML);
 	createIndexLinkListeners();
-});
+}
+
+function handleSecondaryLink(resp) {
+	const contactInfo = resp.data.info;
+	let contactHTML = generateContactHTML(resp.data.info);
+	$("#img-container").append(contactHTML);
+}
+
+function renderLeftIndexList() {
+	let leftImgs = imgs.filter((img) => {
+		return imgs.indexOf(img) <= Math.ceil(imgs.length / 3 - 1);
+	});
+	return generateIndexListHTML(leftImgs);
+}
+
+function renderMiddleIndexList() {
+	let middleImgs = imgs.filter((img) => {
+		return (
+			imgs.indexOf(img) > Math.ceil(imgs.length / 3 - 1) &&
+			imgs.indexOf(img) <= Math.ceil((imgs.length * 2) / 3 - 1)
+		);
+	});
+	return generateIndexListHTML(middleImgs);
+}
+
+function renderRightIndexList() {
+	let rightImgs = imgs.filter((img) => {
+		return imgs.indexOf(img) > Math.ceil((imgs.length * 2) / 3 - 1);
+	});
+	return generateIndexListHTML(rightImgs);
+}
+
+function determineScrollBtnToggle(navLink) {
+	if (
+		!$("#scroll-btn").hasClass("hidden") &&
+		$(navLink).hasClass("text-secondary")
+	) {
+		toggleScrollBtn(true);
+	} else if (
+		$("#scroll-btn").hasClass("hidden") &&
+		!$(navLink).hasClass("text-secondary")
+	) {
+		toggleScrollBtn(false);
+	}
+}
+
+function determineIndexToggle(navLink) {
+	if (
+		$(navLink).hasClass("text-secondary") &&
+		!$("#index-btn").hasClass("hidden")
+	) {
+		toggleIndex(true);
+	} else if (
+		!$(navLink).hasClass("text-secondary") &&
+		$("#index-btn").hasClass("hidden")
+	) {
+		toggleIndex(false);
+	}
+}
 
 function createIndexLinkListeners() {
 	$(".index-link").on("click", async function (evt) {
@@ -63,16 +131,60 @@ function toggleIndex(shouldBeHidden) {
 	}
 }
 
+function toggleScrollBtn(shouldBeHidden) {
+	if (shouldBeHidden === true) {
+		$("#scroll-btn").addClass("hidden");
+		indexIsHidden = true;
+	} else {
+		$("#scroll-btn").removeClass("hidden");
+		indexIsHidden = false;
+	}
+}
+
+function generateContactHTML(info) {
+	return `<div class="my-3">
+        <ul id="contact-info-list">
+            <li>Email: <a href="mailto: ${info.email}">${info.email}</a></li>
+            <li>Instagram: <a href="${info.instagram}">@dracaenaamericana</a></li>
+            <li>IMDB: <a href="${info.imdb}">${info.imdb}</a></li>
+        </ul>
+    </div>`;
+}
+
 function generateIndexListHTML(imgs) {
 	let listItems = "";
 	for (let img in imgs) {
-		listItems += `<li><a id="${imgs[img].filename}" class="index-link" href="">${imgs[img].filename}</a></li>`;
+		listItems += `
+        <li>
+            <div class="row justify-content-center thumbnail-div my-2">
+                <a id="${imgs[img].filename}" class="index-link" href="">
+                    <img class="thumbnail" src="static/images/${currentPage}/${imgs[img].filename}" />
+                </a>
+            <div>
+        </li>`;
 	}
 	return listItems;
 }
 
 function generateImgHTML(filename, folder) {
 	return `<div><img id="main-img" src="../static/images/${folder}/${filename}" /></div>`;
+}
+
+function getNextOrPrevImg() {
+	const soughtImgHTML = generateImgHTML(
+		imgs[currentImgIndex].filename,
+		currentPage
+	);
+	fadeImg(soughtImgHTML);
+}
+
+function fadeImg(imgHTML) {
+	$("#img-container").fadeOut(250);
+	setTimeout(() => {
+		$("#img-container").empty();
+		$("#img-container").append(imgHTML);
+	}, 250);
+	$("#img-container").fadeIn(250);
 }
 
 $("#fwd-btn").on("click", () => {
@@ -92,20 +204,3 @@ $("#back-btn").on("click", () => {
 	}
 	getNextOrPrevImg();
 });
-
-function getNextOrPrevImg() {
-	const soughtImgHTML = generateImgHTML(
-		imgs[currentImgIndex].filename,
-		currentPage
-	);
-	fadeImg(soughtImgHTML);
-}
-
-function fadeImg(imgHTML) {
-	$("#img-container").fadeOut(250);
-	setTimeout(() => {
-		$("#img-container").empty();
-		$("#img-container").append(imgHTML);
-	}, 250);
-	$("#img-container").fadeIn(250);
-}
