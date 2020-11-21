@@ -142,12 +142,17 @@ function toggleScrollBtn(shouldBeHidden) {
 }
 
 function generateContactHTML(info) {
-	return `<div class="my-3">
-        <ul id="contact-info-list">
-            <li>Email: <a href="mailto: ${info.email}">${info.email}</a></li>
-            <li>Instagram: <a href="${info.instagram}">@dracaenaamericana</a></li>
-            <li>IMDB: <a href="${info.imdb}">${info.imdb}</a></li>
-        </ul>
+	return `<div class="col-12 my-4">
+        <div class="row justify-content-start mb-3">
+            <b>Contact</b>
+        </div>
+        <div class="row justify-content-start">
+            <ul id="contact-info-list" class="px-0">
+                <li>Email: <a href="mailto: ${info.email}">${info.email}</a></li>
+                <li>Instagram: <a href="${info.instagram}">@dracaenaamericana</a></li>
+                <li>IMDB: <a href="${info.imdb}">${info.imdb}</a></li>
+            </ul>
+        </div>
     </div>`;
 }
 

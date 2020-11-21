@@ -25,7 +25,7 @@ body {
 
 #contact-info-list {
 	list-style-type: none;
-	font-size: 10px;
+	font-size: 11px;
 }
 
 #index-list-left {
@@ -45,11 +45,30 @@ body {
 	box-shadow: none !important;
 }
 
+#index-btn:hover {
+	transition-duration: 0.2s;
+	color: rgb(99, 140, 253);
+}
+
+#back-btn:hover {
+	color: rgb(185, 185, 185);
+	transform: scale(1.2);
+}
+
+#fwd-btn:hover {
+	color: rgb(185, 185, 185);
+	transform: scale(1.2);
+}
+
 #back-btn:focus {
 	box-shadow: none;
 }
 #fwd-btn:focus {
 	box-shadow: none;
+}
+
+.nav-link:hover {
+	color: rgb(99, 140, 253);
 }
 
 /* .btn-group {
@@ -85,7 +104,7 @@ body {
 
 .nav-link {
 	color: black;
-	font-size: 10px;
+	font-size: 11px;
 }
 
 .carousel {
